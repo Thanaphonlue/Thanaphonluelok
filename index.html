@@ -5,181 +5,174 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thanaphon Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* ---------------- BASE ---------------- */
+:root{
+  --bg:#FFF8E7;
+  --primary:#930500;
+  --accent:#95BBBE;
+  --text:#2b2b2b;
+}
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+  font-family:'Poppins','Inter',sans-serif;
 }
 
 body{
-  font-family:'Poppins', sans-serif;
-  background:#FFF8E7;
-  color:#3a2a2a;
+  background:var(--bg);
+  color:var(--text);
 }
 
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-}
-
-section{
-  padding:90px 0;
-}
-
-h1,h2,h3{
-  color:#930500;
-}
-
-/* ---------------- HERO ---------------- */
-
+/* HERO */
 .hero{
-  min-height:100vh;
+  height:100vh;
   display:flex;
   align-items:center;
-  background:linear-gradient(135deg,#FFF8E7,#ffe9d8);
-}
-
-.hero-content{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-  align-items:center;
-}
-
-/* ---------------- PROFILE ---------------- */
-
-.hero-image{
-  position:relative;
-  display:flex;
   justify-content:center;
-  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  background:linear-gradient(135deg, #FFF8E7, #ffffff);
+  position:relative;
+  overflow:hidden;
 }
 
-/* รูปโปรไฟล์วงกลม */
-.profile-img{
-  width:280px;
-  height:280px;
-  object-fit:cover;
-  border-radius:50%;
-  border:6px solid #930500;
-  box-shadow:0 15px 40px rgba(0,0,0,0.18);
-  animation:float 4s ease-in-out infinite;
-}
-
-/* รูปดุ๊กดิ๊ก */
-.doodle-img{
-  width:80px;
-  height:80px;
+.hero::before{
+  content:"";
   position:absolute;
-  bottom:10px;
-  right:10px;
-  animation:shake 1.5s infinite ease-in-out;
+  width:400px;
+  height:400px;
+  background:var(--accent);
+  border-radius:50%;
+  top:-100px;
+  right:-100px;
+  opacity:0.3;
 }
 
-/* animation */
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
-  100%{transform:translateY(0);}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  background:var(--primary);
+  border-radius:50%;
+  bottom:-120px;
+  left:-120px;
+  opacity:0.2;
 }
 
-@keyframes shake{
-  0%{transform:translateX(0);}
-  25%{transform:translateX(-6px);}
-  50%{transform:translateX(6px);}
-  75%{transform:translateX(-4px);}
-  100%{transform:translateX(0);}
+.profile{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  border:5px solid white;
+  object-fit:cover;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* ---------------- TEXT ---------------- */
-
-.hero-text h1{
-  font-size:3.5rem;
+.hero h1{
+  font-size:2.5rem;
+  color:var(--primary);
 }
 
-.tagline{
-  margin:15px 0;
-  color:#5c4b4b;
+.hero p{
+  margin-top:10px;
+  color:#555;
 }
 
-.btn{
-  display:inline-block;
-  padding:12px 25px;
-  background:#930500;
-  color:white;
-  border-radius:30px;
-  text-decoration:none;
+/* SECTION */
+section{
+  padding:60px 15%;
 }
-
-/* ---------------- SECTION ---------------- */
 
 h2{
-  text-align:center;
-  margin-bottom:40px;
-  font-size:2.3rem;
+  color:var(--primary);
+  margin-bottom:20px;
 }
 
-/* ---------------- PROJECT ---------------- */
+/* ABOUT */
+.about p{
+  margin-bottom:15px;
+  line-height:1.6;
+}
 
+/* PROJECT */
 .project{
   background:white;
   padding:20px;
+  margin-bottom:25px;
   border-radius:15px;
-  margin-bottom:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
-.project img{
-  width:100%;
-  border-radius:12px;
-  margin-bottom:10px;
+.project-img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid white;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* ---------------- SKILLS ---------------- */
+/* TOGGLE */
+.toggle{
+  display:none;
+}
 
+.toggle-label{
+  display:inline-block;
+  background:var(--accent);
+  padding:6px 12px;
+  margin:5px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:0.85rem;
+}
+
+.toggle-label:hover{
+  background:#7faeb3;
+}
+
+/* content toggle */
+.content{
+  display:none;
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.toggle:checked + .toggle-label + .content{
+  display:block;
+}
+
+/* SKILLS */
 .skill{
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
 
 .bar{
   width:100%;
-  height:12px;
-  background:#f0d8d6;
+  height:10px;
+  background:#eee;
   border-radius:20px;
   overflow:hidden;
 }
 
 .fill{
   height:100%;
-  background:#930500;
+  background:var(--primary);
 }
 
-/* ---------------- CONTACT ---------------- */
-
-.contact{
-  text-align:center;
-}
-
+/* CONTACT */
 .contact a{
-  color:#930500;
   display:block;
-  margin:8px 0;
-}
-
-/* ---------------- RESPONSIVE ---------------- */
-
-@media(max-width:900px){
-  .hero-content{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
+  margin-bottom:8px;
+  color:var(--primary);
+  text-decoration:none;
 }
 
 </style>
@@ -188,142 +181,101 @@ h2{
 <body>
 
 <!-- HERO -->
-<section class="hero">
-
-<div class="container hero-content">
-
-  <div class="hero-text">
-
-    <h1>Thanaphon Luelok</h1>
-
-    <p class="tagline">
-      Marketing student passionate about brand storytelling
-    </p>
-
-    <a class="btn" href="#about">View Profile</a>
-
-  </div>
-
-  <div class="hero-image">
-
-    <!-- รูปโปรไฟล์ -->
-    <img src="1778506099842.png" class="profile-img">
-
-    <!-- ดุ๊กดิ๊ก -->
-    <img src="1778504524560.png" class="doodle-img">
-
-  </div>
-
+<div class="hero">
+  <img src="1778525830598.png" class="profile" alt="profile">
+  <h1>Thanaphonluelok</h1>
+  <p>Marketing student passionate about brand storytelling</p>
+  <p>Student ID: 6650101494</p>
 </div>
-
-</section>
 
 <!-- ABOUT -->
-<section id="about">
-
-<div class="container">
-
-<h2>About Me</h2>
-
-<p>
-ฉันชื่อ Thanaphon Luelok เป็นนักศึกษาด้านการจัดการโลจิสติกส์ที่มีความฝันอยากมีฟาร์มใหญ่ ๆ เป็นของตัวเอง ชีวิตในอนาคตคือการดูวัว ไก่ ต้นไม้ แล้วนอนต่อ
-</p>
-
-<p>
-สนใจ Smart Farm และระบบขนส่งสินค้า เพราะเชื่อว่าฟาร์มที่ดีต้องเร็ว ถูก และมีประสิทธิภาพสูง
-</p>
-
-<p>
-เวลาว่างชอบเลี้ยงสัตว์ นอน และเชียร์ฟุตบอล (ไม่เชียร์ลิเวอร์พูล)
-</p>
-
-</div>
-
+<section class="about">
+  <h2>About Me</h2>
+  <p>สวัสดีค่ะ ดิฉันนางสาวธนพร ลือโลก นักศึกษาคณะการจัดการโลจิสติกส์และการคมนาคมขนส่ง มีความสนใจด้านการจัดการทรัพยากร การจัดซื้อ และงานด้านการประสานงาน</p>
+  <p>โดยมุ่งเน้นการนำแนวคิดและเทคโนโลยีสมัยใหม่เข้ามาช่วยเพิ่มประสิทธิภาพในการทำงาน เพื่อให้เกิดความรวดเร็วและแม่นยำมากยิ่งขึ้น</p>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECT 1 -->
 <section>
-
-<div class="container">
-
-<h2>Projects</h2>
-
+<h2>Project 1</h2>
 <div class="project">
-<img src="https://via.placeholder.com/800x400">
-<h3>Project 1: การเลี้ยงไก่ 100,000 ฟอง</h3>
-<p>ระบบฟาร์มอัจฉริยะควบคุมด้วย AI และ CCTV</p>
-</div>
+  <img src="1778528920336.png" class="project-img">
 
+  <input type="checkbox" id="p1t" class="toggle">
+  <label for="p1t" class="toggle-label">💖 ดูรายละเอียด</label>
+  <div class="content">
+    <b>การเพิ่มประสิทธิภาพการจัดการทรัพยากรด้วยเทคโนโลยีดิจิทัล</b><br>
+    โครงการนี้ใช้ระบบฐานข้อมูลและเครื่องมือดิจิทัลช่วยบริหารทรัพยากรภายในองค์กร ลดความสูญเสีย และเพิ่มความคุ้มค่าในการใช้งาน
+  </div>
+</div>
+</section>
+
+<!-- PROJECT 2 -->
+<section>
+<h2>Project 2</h2>
 <div class="project">
-<img src="https://via.placeholder.com/800x400">
-<h3>Project 2: ฟาร์มท่องเที่ยว Gen Z</h3>
-<p>ฟาร์มหรูสไตล์ถ่ายรูปและคาเฟ่กลางทุ่ง</p>
-</div>
+  <img src="1778528530808.png" class="project-img">
 
+  <input type="checkbox" id="p2t" class="toggle">
+  <label for="p2t" class="toggle-label">💖 ดูรายละเอียด</label>
+  <div class="content">
+    <b>ระบบสนับสนุนการจัดซื้อด้วยปัญญาประดิษฐ์</b><br>
+    ใช้ AI วิเคราะห์ต้นทุน เปรียบเทียบราคา และคาดการณ์ความต้องการสินค้า เพื่อช่วยตัดสินใจจัดซื้อได้แม่นยำและลดต้นทุน
+  </div>
+</div>
+</section>
+
+<!-- PROJECT 3 -->
+<section>
+<h2>Project 3</h2>
 <div class="project">
-<img src="https://via.placeholder.com/800x400">
-<h3>Project 3: หุ่นยนต์ในฟาร์ม</h3>
-<p>ระบบ Automation ลดแรงงานคน</p>
-</div>
+  <img src="1778528667700.png" class="project-img">
 
+  <input type="checkbox" id="p3t" class="toggle">
+  <label for="p3t" class="toggle-label">💖 ดูรายละเอียด</label>
+  <div class="content">
+    <b>ระบบวางแผนการขนส่งและประสานงานอัจฉริยะ</b><br>
+    พัฒนาระบบวางแผนเส้นทางและประสานงานแบบเรียลไทม์ ลดความล่าช้า และเพิ่มความแม่นยำในการส่งมอบสินค้า
+  </div>
 </div>
-
 </section>
 
 <!-- SKILLS -->
 <section>
-
-<div class="container">
-
 <h2>Skills</h2>
 
-<div class="skill">
-<p>Smart Farm Management</p>
-<div class="bar"><div class="fill" style="width:95%"></div></div>
+<div class="skill">Solver (999%)
+  <div class="bar"><div class="fill" style="width:99%"></div></div>
 </div>
 
-<div class="skill">
-<p>Farm Logistics</p>
-<div class="bar"><div class="fill" style="width:90%"></div></div>
+<div class="skill">Excel (999%)
+  <div class="bar"><div class="fill" style="width:99%"></div></div>
 </div>
 
-<div class="skill">
-<p>Animal Care</p>
-<div class="bar"><div class="fill" style="width:92%"></div></div>
+<div class="skill">การนอน (999%)
+  <div class="bar"><div class="fill" style="width:99%"></div></div>
 </div>
 
-<div class="skill">
-<p>Creative Marketing</p>
-<div class="bar"><div class="fill" style="width:88%"></div></div>
+<div class="skill">การคิดวิเคราะห์ (999%)
+  <div class="bar"><div class="fill" style="width:95%"></div></div>
 </div>
 
-<div class="skill">
-<p>Agricultural Innovation</p>
-<div class="bar"><div class="fill" style="width:91%"></div></div>
+<div class="skill">การประสานงาน (999%)
+  <div class="bar"><div class="fill" style="width:95%"></div></div>
 </div>
 
-<div class="skill">
-<p>Sleeping Efficiency</p>
-<div class="bar"><div class="fill" style="width:100%"></div></div>
-</div>
-
+<div class="skill">AI Tools (999%)
+  <div class="bar"><div class="fill" style="width:95%"></div></div>
 </div>
 
 </section>
 
 <!-- CONTACT -->
 <section class="contact">
-
-<div class="container">
-
 <h2>Contact</h2>
-
-<p>Email: thanaphon@example.com</p>
-<p>LinkedIn: linkedin.com/in/thanaphon</p>
-<p>Instagram: @thanaphon</p>
-
-</div>
-
+<a href="#">Email: 12345678@90</a>
+<a href="#">LinkedIn: แปดแปดแปด</a>
+<a href="#">Instagram: ค้นหาเดี๋ยวก็เจอ</a>
 </section>
 
 </body>
