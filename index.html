@@ -5,27 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thanaphon Portfolio</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#FFF8E7;
-  --primary:#930500;
-  --accent:#95BBBE;
-  --text:#2b2b2b;
-}
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins','Inter',sans-serif;
+  font-family:'Poppins', sans-serif;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:#FFF8E7;
+  color:#333;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#FFF8E7;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:12px;
+  border-bottom:2px solid #930500;
+  z-index:1000;
+}
+
+nav a{
+  text-decoration:none;
+  color:#930500;
+  font-weight:600;
 }
 
 /* HERO */
@@ -34,145 +46,148 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
   text-align:center;
-  background:linear-gradient(135deg, #FFF8E7, #ffffff);
-  position:relative;
-  overflow:hidden;
+  padding:20px;
+  background:linear-gradient(135deg,#FFF8E7,#95BBBE);
 }
 
-.hero::before{
-  content:"";
-  position:absolute;
-  width:400px;
-  height:400px;
-  background:var(--accent);
-  border-radius:50%;
-  top:-100px;
-  right:-100px;
-  opacity:0.3;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  background:var(--primary);
-  border-radius:50%;
-  bottom:-120px;
-  left:-120px;
-  opacity:0.2;
-}
-
-.profile{
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  border:5px solid white;
-  object-fit:cover;
-  margin-bottom:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+.hero-card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  max-width:800px;
 }
 
 .hero h1{
-  font-size:2.5rem;
-  color:var(--primary);
+  font-size:40px;
+  color:#930500;
 }
 
 .hero p{
   margin-top:10px;
-  color:#555;
+}
+
+/* PROFILE */
+.profile{
+  margin-top:20px;
+  position:relative;
+}
+
+.profile img{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #930500;
+}
+
+.bg-circle{
+  position:absolute;
+  width:260px;
+  height:260px;
+  background:#95BBBE;
+  border-radius:50%;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:-1;
 }
 
 /* SECTION */
 section{
-  padding:60px 15%;
+  padding:80px 20px;
+  max-width:1000px;
+  margin:auto;
 }
 
 h2{
-  color:var(--primary);
+  color:#930500;
   margin-bottom:20px;
 }
 
-/* ABOUT */
-.about p{
-  margin-bottom:15px;
-  line-height:1.6;
+/* BUTTON MENU */
+.menu{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+
+.menu a{
+  background:#930500;
+  color:white;
+  padding:10px 15px;
+  border-radius:10px;
 }
 
 /* PROJECT */
 .project{
   background:white;
-  padding:20px;
-  margin-bottom:25px;
+  margin-bottom:20px;
   border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  padding:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
-.project-img{
+.project img{
   width:120px;
   height:120px;
   border-radius:50%;
   object-fit:cover;
-  border:4px solid white;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  border:3px solid #930500;
 }
 
-/* TOGGLE */
 .toggle{
   display:none;
 }
 
 .toggle-label{
   display:inline-block;
-  background:var(--accent);
-  padding:6px 12px;
-  margin:5px;
+  background:#930500;
+  color:white;
+  padding:6px 10px;
   border-radius:8px;
+  margin:5px;
   cursor:pointer;
-  font-size:0.85rem;
 }
 
-.toggle-label:hover{
-  background:#7faeb3;
-}
-
-/* content toggle */
+/* hide/show text */
 .content{
   display:none;
   margin-top:10px;
-  line-height:1.6;
 }
 
-.toggle:checked + .toggle-label + .content{
+.toggle:checked ~ .content{
   display:block;
 }
 
 /* SKILLS */
 .skill{
-  margin-bottom:15px;
+  margin:10px 0;
 }
 
 .bar{
   width:100%;
-  height:10px;
-  background:#eee;
+  background:#ddd;
   border-radius:20px;
   overflow:hidden;
 }
 
 .fill{
-  height:100%;
-  background:var(--primary);
+  height:20px;
+  width:100%;
+  background:#930500;
+  text-align:right;
+  color:white;
+  padding-right:5px;
 }
 
 /* CONTACT */
-.contact a{
-  display:block;
-  margin-bottom:8px;
-  color:var(--primary);
-  text-decoration:none;
+.contact{
+  background:#95BBBE;
+  padding:20px;
+  border-radius:15px;
 }
 
 </style>
@@ -180,102 +195,122 @@ h2{
 
 <body>
 
+<nav>
+  <a href="#about">👤 About</a>
+  <a href="#projects">📃 Projects</a>
+  <a href="#skills">🔎 Skills</a>
+  <a href="#contact">📞 Contact</a>
+</nav>
+
 <!-- HERO -->
 <div class="hero">
-  <img src="1778525830598.png" class="profile" alt="profile">
-  <h1>Thanaphonluelok</h1>
-  <p>Marketing student passionate about brand storytelling</p>
-  <p>Student ID: 6650101494</p>
+  <div class="hero-card">
+    <div class="profile">
+      <div class="bg-circle"></div>
+      <img src="1778525830598.png" alt="profile">
+    </div>
+    <h1>Thanaphon Luelok</h1>
+    <p>Marketing student passionate about brand storytelling</p>
+    <p>รหัสนักศึกษา: 6650101494</p>
+
+    <div class="menu">
+      <a href="#about">👤 About</a>
+      <a href="#projects">📃 Project</a>
+      <a href="#skills">🔎 Skill</a>
+      <a href="#contact">📞 Contact</a>
+    </div>
+  </div>
 </div>
 
 <!-- ABOUT -->
-<section class="about">
+<section id="about">
   <h2>About Me</h2>
-  <p>สวัสดีค่ะ ดิฉันนางสาวธนพร ลือโลก นักศึกษาคณะการจัดการโลจิสติกส์และการคมนาคมขนส่ง มีความสนใจด้านการจัดการทรัพยากร การจัดซื้อ และงานด้านการประสานงาน</p>
-  <p>โดยมุ่งเน้นการนำแนวคิดและเทคโนโลยีสมัยใหม่เข้ามาช่วยเพิ่มประสิทธิภาพในการทำงาน เพื่อให้เกิดความรวดเร็วและแม่นยำมากยิ่งขึ้น</p>
+  <p>สวัสดีค่ะ ดิฉันนางสาวธนพร ลือโลก นักศึกษาคณะการจัดการโลจิสติกส์และการคมนาคมขนส่ง มีความสนใจด้านการจัดการทรัพยากร การจัดซื้อ และงานด้านการประสานงาน โดยเน้นการนำแนวคิดและเทคโนโลยีสมัยใหม่เข้ามาช่วยเพิ่มประสิทธิภาพในการทำงาน เพื่อให้เกิดความรวดเร็วและแม่นยำมากยิ่งขึ้น</p>
 </section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
 
 <!-- PROJECT 1 -->
-<section>
-<h2>Project 1</h2>
 <div class="project">
-  <img src="1778528920336.png" class="project-img">
+  <img src="1778528920336.png">
 
-  <input type="checkbox" id="p1t" class="toggle">
-  <label for="p1t" class="toggle-label">💖 ดูรายละเอียด</label>
+  <input type="checkbox" id="p1" class="toggle">
+  <label class="toggle-label" for="p1">❤️ ดูรายละเอียด</label>
+
   <div class="content">
-    <b>การเพิ่มประสิทธิภาพการจัดการทรัพยากรด้วยเทคโนโลยีดิจิทัล</b><br>
-    โครงการนี้ใช้ระบบฐานข้อมูลและเครื่องมือดิจิทัลช่วยบริหารทรัพยากรภายในองค์กร ลดความสูญเสีย และเพิ่มความคุ้มค่าในการใช้งาน
+    <h3>การเพิ่มประสิทธิภาพการจัดการทรัพยากรด้วยเทคโนโลยีดิจิทัล</h3>
+    <p>ใช้ระบบฐานข้อมูลและเทคโนโลยีดิจิทัลช่วยบริหารทรัพยากร ลดความสูญเสีย เพิ่มความแม่นยำในการวางแผน</p>
   </div>
 </div>
-</section>
 
 <!-- PROJECT 2 -->
-<section>
-<h2>Project 2</h2>
 <div class="project">
-  <img src="1778528530808.png" class="project-img">
+  <img src="1778528530808.png">
 
-  <input type="checkbox" id="p2t" class="toggle">
-  <label for="p2t" class="toggle-label">💖 ดูรายละเอียด</label>
+  <input type="checkbox" id="p2" class="toggle">
+  <label class="toggle-label" for="p2">❤️ ดูรายละเอียด</label>
+
   <div class="content">
-    <b>ระบบสนับสนุนการจัดซื้อด้วยปัญญาประดิษฐ์</b><br>
-    ใช้ AI วิเคราะห์ต้นทุน เปรียบเทียบราคา และคาดการณ์ความต้องการสินค้า เพื่อช่วยตัดสินใจจัดซื้อได้แม่นยำและลดต้นทุน
+    <h3>ระบบสนับสนุนการจัดซื้อด้วย AI</h3>
+    <p>ใช้ AI วิเคราะห์ต้นทุน เปรียบเทียบราคา และคาดการณ์ความต้องการสินค้าเพื่อช่วยตัดสินใจ</p>
   </div>
 </div>
-</section>
 
 <!-- PROJECT 3 -->
-<section>
-<h2>Project 3</h2>
 <div class="project">
-  <img src="1778528667700.png" class="project-img">
+  <img src="1778528667700.png">
 
-  <input type="checkbox" id="p3t" class="toggle">
-  <label for="p3t" class="toggle-label">💖 ดูรายละเอียด</label>
+  <input type="checkbox" id="p3" class="toggle">
+  <label class="toggle-label" for="p3">❤️ ดูรายละเอียด</label>
+
   <div class="content">
-    <b>ระบบวางแผนการขนส่งและประสานงานอัจฉริยะ</b><br>
-    พัฒนาระบบวางแผนเส้นทางและประสานงานแบบเรียลไทม์ ลดความล่าช้า และเพิ่มความแม่นยำในการส่งมอบสินค้า
+    <h3>ระบบวางแผนการขนส่งอัจฉริยะ</h3>
+    <p>วางแผนเส้นทางและประสานงานแบบเรียลไทม์ ลดความล่าช้า เพิ่มประสิทธิภาพการส่งมอบ</p>
   </div>
 </div>
+
 </section>
 
 <!-- SKILLS -->
-<section>
+<section id="skills">
 <h2>Skills</h2>
 
-<div class="skill">Solver (999%)
-  <div class="bar"><div class="fill" style="width:99%"></div></div>
+<div class="skill">Solver
+  <div class="bar"><div class="fill">999%</div></div>
 </div>
 
-<div class="skill">Excel (999%)
-  <div class="bar"><div class="fill" style="width:99%"></div></div>
+<div class="skill">Excel
+  <div class="bar"><div class="fill">999%</div></div>
 </div>
 
-<div class="skill">การนอน (999%)
-  <div class="bar"><div class="fill" style="width:99%"></div></div>
+<div class="skill">การนอน
+  <div class="bar"><div class="fill">999%</div></div>
 </div>
 
-<div class="skill">การคิดวิเคราะห์ (999%)
-  <div class="bar"><div class="fill" style="width:95%"></div></div>
+<div class="skill">การคิดวิเคราะห์
+  <div class="bar"><div class="fill">999%</div></div>
 </div>
 
-<div class="skill">การประสานงาน (999%)
-  <div class="bar"><div class="fill" style="width:95%"></div></div>
+<div class="skill">การประสานงาน
+  <div class="bar"><div class="fill">999%</div></div>
 </div>
 
-<div class="skill">AI Tools (999%)
-  <div class="bar"><div class="fill" style="width:95%"></div></div>
+<div class="skill">AI Tools
+  <div class="bar"><div class="fill">999%</div></div>
 </div>
 
 </section>
 
 <!-- CONTACT -->
-<section class="contact">
+<section id="contact">
 <h2>Contact</h2>
-<a href="#">Email: 12345678@90</a>
-<a href="#">LinkedIn: แปดแปดแปด</a>
-<a href="#">Instagram: ค้นหาเดี๋ยวก็เจอ</a>
+<div class="contact">
+  <p>Email: 12345678@90</p>
+  <p>LinkedIn: แปดแปดแปด</p>
+  <p>Instagram: ค้นหาเดี๋ยวก็เจอ</p>
+</div>
 </section>
 
 </body>
